@@ -72,7 +72,7 @@ const Screen2_a = () => {
                 <Text
                     style={styles.txtCreateAcc}
                 >
-                    CREATE ACCOUNT
+                    Forgot your Password ?
                 </Text>
             </TouchableOpacity>
         </View>
@@ -137,8 +137,8 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         fontSize : 18,
         color : 'black',
-        fontWeight : 600,
+        fontWeight : 700,
         padding : 20,
-        marginTop : 40
+        marginTop : 40,
     }
 })
