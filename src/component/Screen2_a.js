@@ -1,9 +1,9 @@
-import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity, Alert } from 'react-native'
-import React, { useState } from 'react'
+import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity, Alert,useState } from 'react-native'
 
 const Screen2_a = () => {
 
     const [showPassword, setShowPassword] = useState(true);
+    const [username, setUserName] = useState("")
 
     const handleShowPassword = () => {
         setShowPassword(!showPassword)
