@@ -1,12 +1,47 @@
-import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity, Alert,useState } from 'react-native'
+import { useState } from 'react';
+import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity, Alert } from 'react-native'
 
 const Screen2_a = () => {
+    const sampleAccounts = [
+        { username: 'user1', password: 'password1' },
+        { username: 'user2', password: 'password2' },
+    ];
 
     const [showPassword, setShowPassword] = useState(true);
-    const [username, setUserName] = useState("")
+    const [username, setUsername] = useState("")
+    const [password, setPassword] = useState("")
+    const [loginStatus, setLoginStatus] = useState(false);
+    const [loginMessagge, setLoginMessage] = useState("No infomation !")
 
     const handleShowPassword = () => {
         setShowPassword(!showPassword)
+    }
+
+    const handleGetUsername = (element) => {
+        setUsername(element.target.value)
+    }
+
+    const handleGetPassword = (element) => {
+        setPassword(element.target.value)
+    }
+    const checkAccount = sampleAccounts.find(element => {
+        return element.username === username && element.password === password;
+    });
+    const handleLogin = () => {
+        if (checkAccount) {
+            setLoginMessage('Login success')
+            setLoginStatus(true)
+        } else {
+            setLoginMessage('Account is not true !')
+            setLoginStatus(false);
+        }
+        alert("Login " + loginStatus + " Message : " + loginMessagge)
+        console.log({
+            "Username from form": username,
+            "Password from form": password,
+            "Login ": loginStatus,
+            "Message ": loginMessagge
+        })
     }
 
     return (
@@ -22,9 +57,10 @@ const Screen2_a = () => {
                     style={styles.imgInTxtInput}
                 />
                 <TextInput
+                    value={username}
                     placeholder='Name'
-                    onChange={() => {
-                        /*  */
+                    onChange={(element) => {
+                        handleGetUsername(element)
                     }}
                     style={styles.txtTextInput}
                 />
@@ -35,9 +71,10 @@ const Screen2_a = () => {
                     style={styles.imgInTxtInput}
                 />
                 <TextInput
+                    value={password}
                     placeholder='Password'
-                    onChange={() => {
-                        /*  */
+                    onChange={(element) => {
+                        handleGetPassword(element)
                     }}
                     secureTextEntry={showPassword}
                     style={styles.txtTextInput}
@@ -52,9 +89,7 @@ const Screen2_a = () => {
                 </TouchableOpacity>
             </View>
             <TouchableOpacity
-                onPress={() => {
-                    Alert.alert("Login success !")
-                }}
+                onPress={handleLogin}
                 style={styles.buttonLogin}
             >
                 <Text
@@ -63,7 +98,7 @@ const Screen2_a = () => {
                     LOGIN
                 </Text>
             </TouchableOpacity>
-            <TouchableOpacity 
+            <TouchableOpacity
                 onPress={() => {
                     /*  */
                 }}
@@ -107,7 +142,7 @@ const styles = StyleSheet.create({
         marginBottom: 10,
         borderWidth: 1,
         borderColor: '#F2F2F2',
-        padding : 10
+        padding: 10
     },
     imgInTxtInput: {
         width: 25,
@@ -117,28 +152,28 @@ const styles = StyleSheet.create({
     txtTextInput: {
         width: '100%',
     },
-    buttonLogin : {
-        width : '90%',
-        backgroundColor : 'black',
-        padding : 8,
-        marginTop : 50,
-        borderRadius : 5
+    buttonLogin: {
+        width: '90%',
+        backgroundColor: 'black',
+        padding: 8,
+        marginTop: 50,
+        borderRadius: 5
     },
-    textBtnLogin : {
+    textBtnLogin: {
         textAlign: 'center',
         fontSize: 22,
-        fontWeight : 600,
-        color : 'white'
+        fontWeight: 600,
+        color: 'white'
     },
-    btnCreateAcc : {
-        width : '90%'
+    btnCreateAcc: {
+        width: '90%'
     },
-    txtCreateAcc : {
+    txtCreateAcc: {
         textAlign: 'center',
-        fontSize : 18,
-        color : 'black',
-        fontWeight : 700,
-        padding : 20,
-        marginTop : 40,
+        fontSize: 18,
+        color: 'black',
+        fontWeight: 700,
+        padding: 20,
+        marginTop: 40,
     }
 })

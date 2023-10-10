@@ -1,31 +1,21 @@
-import { View, Text, useState } from 'react-native'
+import { useState } from 'react';
 
-const handleLogin = ({ userName, password }) => {
-    const [sateLogin, setStateLogin] = useState(false);
+const handleLogin = ({ sampleDataUser, userName, password }) => {
     const [loginStatus, setLoginStatus] = useState("Chưa nhập thông tin !");
-    const [login, setLogin] = useState({login : false, status : ''});
+    const [login, setLogin] = useState({ login: false, status: "Chưa nhập thông tin !" });
 
-    const sampleDataUser = [
-        user1 = {
-            userName: 'nhatlinh',
-            password: 'nhatlinh'
-        },
-        user2 = {
-            userName: 'nhatlinh201',
-            password: 'nhatlinh201'
-        },
-    ]
-
-    const checkUser = ({sampleDataUser, userName, password}) => {
-        sampleDataUser.array.forEach(element => {
-            if(element.userName===userName) {
-                if(element.password===password) {
-                    setLoginSate
-                }
+    sampleDataUser.array.forEach(element => {
+        if (element.userName === userName) {
+            if (element.password === password) {
+                setLogin({login:true, status: 'Login success'})
+            } else {
+                setLogin({login: false, status : 'Password is not true !'})
             }
-        });
-    }
-
+        } else {
+            setLogin({login: false, status : 'Username is not true !'})
+        }
+    });
+    alert(login.status);
 }
 
 export default handleLogin
