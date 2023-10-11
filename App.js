@@ -6,8 +6,8 @@ import Screen2_b from './src/component/Screen2_b';
 export default function App() {
   return (
     <View style={styles.container}>
-      <Screen2_a/>
-      {/* <Screen2_b/> */}
+      {/* <Screen2_a/> */}
+      <Screen2_b/>
     </View>
   );
 }
